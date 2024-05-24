@@ -211,9 +211,11 @@ export default function CreateListing() {
 
   return (
     <main className="mx-auto max-w-4xl p-3">
-      <h1 className="my-7 text-center text-3xl font-bold">Tạo bài đăng</h1>
+      <h1 className="my-7 text-center text-3xl font-bold text-emerald-700">
+        Tạo bài đăng
+      </h1>
       <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
-        <div className="flex flex-col gap-4 flex-1">
+        <div className="flex flex-col gap-4 flex-1 text-emerald-700">
           <input
             type="text"
             placeholder="Tên bài đăng"
@@ -234,7 +236,7 @@ export default function CreateListing() {
             onChange={handleChange}
             value={formData.description}
           />
-          <div className="flex flex-col gap-y-6">
+          <div className="flex flex-col gap-y-6 text-emerald-700">
             <select
               className="rounded-lg border p-3"
               value={selectedCity}
@@ -302,7 +304,7 @@ export default function CreateListing() {
                 cities.find((city) => city.Id === selectedCity)?.Name)
             }
           />
-          <div className="flex flex-wrap gap-6">
+          <div className="flex flex-wrap gap-6 text-emerald-700">
             <div className="flex gap-2">
               <input
                 type="checkbox"
@@ -354,7 +356,7 @@ export default function CreateListing() {
               <span>Giảm giá</span>
             </div>
           </div>
-          <div className="flex flex-wrap gap-6">
+          <div className="flex flex-wrap gap-6 text-emerald-700">
             <div className="flex items-center gap-2">
               <input
                 type="number"
@@ -426,10 +428,10 @@ export default function CreateListing() {
             )}
           </div>
         </div>
-        <div className="flex flex-1 flex-col gap-4">
+        <div className="flex flex-1 flex-col gap-4 text-emerald-700">
           <p className="font-semibold">
             Hình ảnh (tối đa 6):
-            <span className="ml-2 font-normal text-gray-600">
+            <span className="ml-2 font-normal text-emerald-600">
               Ảnh đầu tiên sẽ được làm thumbnail cho bài đăng
             </span>
           </p>
@@ -446,12 +448,12 @@ export default function CreateListing() {
               type="button"
               disabled={uploading}
               onClick={handleImageSubmit}
-              className="w-28 rounded-lg bg-green-500 px-5 py-2 text-sm font-medium text-white hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
+              className="w-28 rounded-lg bg-green-500 px-5 py-2 text-sm font-medium text-white hover:bg-green-600 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {uploading ? "Đang tải..." : "Tải lên"}
             </button>
           </div>
-          <p className="text-sm text-red-700">
+          <p className="text-sm text-rose-700">
             {imageUploadError && imageUploadError}
           </p>
           {formData.imageUrls.length > 0 &&
@@ -468,7 +470,7 @@ export default function CreateListing() {
                 <button
                   type="button"
                   onClick={() => handleRemoveImage(index)}
-                  className="rounded-lg bg-red-500 px-5 py-2 text-sm font-medium text-white hover:opacity-75 hover:shadow-lg"
+                  className="rounded-lg bg-rose-500 px-5 py-2 text-sm font-medium text-white hover:opacity-75 hover:shadow-lg"
                 >
                   Xóa
                 </button>
@@ -476,11 +478,11 @@ export default function CreateListing() {
             ))}
           <button
             disabled={loading || uploading}
-            className="rounded-lg bg-sky-500 px-5 py-4 text-sm font-medium text-white hover:opacity-95 disabled:opacity-50"
+            className="rounded-lg bg-emerald-500 px-5 py-4 text-sm font-medium text-white hover:bg-emerald-600 disabled:opacity-50"
           >
             {loading ? "Đang tạo..." : "Tạo bài đăng"}
           </button>
-          {error && <p className="text-sm text-red-700">{error}</p>}
+          {error && <p className="text-sm text-rose-700">{error}</p>}
         </div>
       </form>
     </main>

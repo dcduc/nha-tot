@@ -171,13 +171,15 @@ export default function UpdateListing() {
   };
   return (
     <main className="mx-auto max-w-4xl p-3">
-      <h1 className="my-7 text-center text-3xl font-bold">Cập nhật bài đăng</h1>
+      <h1 className="my-7 text-center text-3xl font-bold text-emerald-700">
+        Cập nhật bài đăng
+      </h1>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:flex-row">
-        <div className="flex flex-1 flex-col gap-4">
+        <div className="flex flex-1 flex-col gap-4 text-emerald-700">
           <input
             type="text"
             placeholder="Tên bài đăng"
-            className="rounded-lg border border-gray-300 px-5 py-2"
+            className="rounded-lg border border-gray-300 p-3"
             id="name"
             maxLength="255"
             minLength="6"
@@ -188,7 +190,7 @@ export default function UpdateListing() {
           <textarea
             type="text"
             placeholder="Mô tả"
-            className="rounded-lg border border-gray-300 px-5 py-2"
+            className="rounded-lg border border-gray-300 p-3"
             id="description"
             required
             onChange={handleChange}
@@ -203,7 +205,7 @@ export default function UpdateListing() {
             onChange={handleChange}
             value={formData.address}
           />
-          <div className="flex gap-6 flex-wrap">
+          <div className="flex gap-6 flex-wrap text-emerald-700">
             <div className="flex gap-2">
               <input
                 type="checkbox"
@@ -212,7 +214,7 @@ export default function UpdateListing() {
                 onChange={handleChange}
                 checked={formData.type === "sale"}
               />
-              <span>Sell</span>
+              <span>Bán</span>
             </div>
             <div className="flex gap-2">
               <input
@@ -222,7 +224,7 @@ export default function UpdateListing() {
                 onChange={handleChange}
                 checked={formData.type === "rent"}
               />
-              <span>Rent</span>
+              <span>Thuê</span>
             </div>
             <div className="flex gap-2">
               <input
@@ -232,7 +234,7 @@ export default function UpdateListing() {
                 onChange={handleChange}
                 checked={formData.parking}
               />
-              <span>Parking spot</span>
+              <span>Bãi xe</span>
             </div>
             <div className="flex gap-2">
               <input
@@ -242,7 +244,7 @@ export default function UpdateListing() {
                 onChange={handleChange}
                 checked={formData.furnished}
               />
-              <span>Furnished</span>
+              <span>Nội thất</span>
             </div>
             <div className="flex gap-2">
               <input
@@ -252,10 +254,10 @@ export default function UpdateListing() {
                 onChange={handleChange}
                 checked={formData.offer}
               />
-              <span>Offer</span>
+              <span>Giảm giá</span>
             </div>
           </div>
-          <div className="flex flex-wrap gap-6">
+          <div className="flex flex-wrap gap-6 text-emerald-700">
             <div className="flex items-center gap-2">
               <input
                 type="number"
@@ -267,7 +269,7 @@ export default function UpdateListing() {
                 onChange={handleChange}
                 value={formData.bedrooms}
               />
-              <p>Beds</p>
+              <p>Phòng ngủ</p>
             </div>
             <div className="flex items-center gap-2">
               <input
@@ -280,14 +282,14 @@ export default function UpdateListing() {
                 onChange={handleChange}
                 value={formData.bathrooms}
               />
-              <p>Baths</p>
+              <p>Phòng tắm</p>
             </div>
             <div className="flex items-center gap-2">
               <input
                 type="number"
                 id="regularPrice"
-                min="50"
-                max="10000000"
+                min="1"
+                max="1000000000"
                 required
                 className="rounded-lg border border-gray-300 px-5 py-2"
                 onChange={handleChange}
@@ -318,6 +320,7 @@ export default function UpdateListing() {
                   <p>
                     Giảm giá (<strong>VND</strong>)
                   </p>
+
                   {formData.type === "rent" && (
                     <span className="text-xs">/tháng</span>
                   )}
@@ -326,17 +329,17 @@ export default function UpdateListing() {
             )}
           </div>
         </div>
-        <div className="flex flex-col flex-1 gap-4">
+        <div className="flex flex-col flex-1 gap-4 text-emerald-700">
           <p className="font-semibold">
             Hình ảnh (tối đa 6):
-            <span className="font-normal text-gray-600 ml-2">
+            <span className="font-normal text-emerald-700 ml-2">
               Ảnh đầu tiên sẽ được làm thumbnail cho bài đăng
             </span>
           </p>
           <div className="flex gap-4">
             <input
               onChange={(e) => setFiles(e.target.files)}
-              className="w-full rounded-lg border border-gray-300 px-5 py-2 bg-white"
+              className="w-full rounded-lg border border-gray-300 px-5 py-2"
               type="file"
               id="images"
               accept="image/*"
@@ -346,12 +349,12 @@ export default function UpdateListing() {
               type="button"
               disabled={uploading}
               onClick={handleImageSubmit}
-              className="w-28 rounded-lg bg-green-500 px-5 py-2 text-sm font-medium text-white hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
+              className="w-28 rounded-lg bg-green-500 px-5 py-2 text-sm font-medium text-white hover:bg-green-600 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {uploading ? "Đang tải..." : "Tải lên"}
             </button>
           </div>
-          <p className="text-red-700 text-sm">
+          <p className="text-rose-700 text-sm">
             {imageUploadError && imageUploadError}
           </p>
           {formData.imageUrls.length > 0 &&
@@ -368,7 +371,7 @@ export default function UpdateListing() {
                 <button
                   type="button"
                   onClick={() => handleRemoveImage(index)}
-                  className="rounded-lg bg-red-500 px-5 py-2 text-sm font-medium text-white hover:opacity-75 hover:shadow-lg"
+                  className="rounded-lg bg-rose-500 px-5 py-2 text-sm font-medium text-white hover:opacity-75 hover:shadow-lg"
                 >
                   Xóa
                 </button>
@@ -376,11 +379,11 @@ export default function UpdateListing() {
             ))}
           <button
             disabled={loading || uploading}
-            className="rounded-lg bg-sky-500 px-5 py-4 text-sm font-medium text-white hover:opacity-95 disabled:opacity-50"
+            className="rounded-lg bg-emerald-500 px-5 py-4 text-sm font-medium text-white hover:opacity-95 disabled:opacity-50"
           >
             {loading ? "Đang cập nhật..." : "Cập nhật bài đăng"}
           </button>
-          {error && <p className="text-red-700 text-sm">{error}</p>}
+          {error && <p className="text-rose-700 text-sm">{error}</p>}
         </div>
       </form>
     </main>
