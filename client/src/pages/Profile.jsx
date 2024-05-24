@@ -56,6 +56,7 @@ export default function Profile() {
         setFilePerc(Math.round(progress));
       },
       (error) => {
+        console.log(error.message);
         setFileUploadError(true);
       },
       () => {
@@ -122,7 +123,7 @@ export default function Profile() {
       }
       dispatch(deleteUserSuccess(data));
     } catch (error) {
-      dispatch(deleteUserFailure(data.message));
+      dispatch(deleteUserFailure(error.message));
     }
   };
 
