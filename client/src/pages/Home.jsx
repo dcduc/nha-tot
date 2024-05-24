@@ -49,15 +49,15 @@ export default function Home() {
     <div>
       {/* top */}
       <div className="flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold text-slate-700 lg:text-6xl">
-          <span className="text-slate-500">Nhà</span>Tốt
+        <h1 className="text-3xl font-bold text-emerald-900 lg:text-6xl">
+          <span className="text-emerald-700">Nhà</span>Tốt
         </h1>
-        <div className="text-xs text-gray-400 sm:text-sm">
+        <div className="text-xs font-medium text-emerald-700 sm:text-lg">
           Tìm kiếm và cho thuê nhà đất, phòng trọ, chung cư dễ dàng và hiệu quả
         </div>
         <Link
           to={"/search"}
-          className="text-xs sm:text-sm text-blue-800 font-bold hover:underline"
+          className="text-xs sm:text-sm text-emerald-900 font-bold hover:underline"
         >
           Xem tất cả
         </Link>
@@ -86,11 +86,11 @@ export default function Home() {
         {offerListings && offerListings.length > 0 && (
           <div className="">
             <div className="my-3">
-              <h2 className="text-2xl font-semibold text-slate-600">
+              <h2 className="text-2xl font-semibold text-emerald-900">
                 Offers gần đây
               </h2>
               <Link
-                className="text-sm text-blue-800 hover:underline"
+                className="text-sm text-emerald-700 hover:underline"
                 to={"/search?offer=true"}
               >
                 Xem thêm các offers
@@ -106,11 +106,11 @@ export default function Home() {
         {rentListings && rentListings.length > 0 && (
           <div className="">
             <div className="my-3">
-              <h2 className="text-2xl font-semibold text-slate-600">
+              <h2 className="text-2xl font-semibold text-emerald-900">
                 Nhà cho thuê gần đây
               </h2>
               <Link
-                className="text-sm text-blue-800 hover:underline"
+                className="text-sm text-emerald-700 hover:underline"
                 to={"/search?type=rent"}
               >
                 Xem thêm nhà cho thuê
@@ -126,11 +126,11 @@ export default function Home() {
         {saleListings && saleListings.length > 0 && (
           <div className="">
             <div className="my-3">
-              <h2 className="text-2xl font-semibold text-slate-600">
+              <h2 className="text-2xl font-semibold text-emerald-900">
                 Nhà bán gần đây
               </h2>
               <Link
-                className="text-sm text-blue-800 hover:underline"
+                className="text-sm text-emerald-700 hover:underline"
                 to={"/search?type=sale"}
               >
                 Xem thêm nhà bán

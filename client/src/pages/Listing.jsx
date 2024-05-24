@@ -73,8 +73,16 @@ export default function Listing() {
 
   return (
     <main>
-      {loading && <p className="text-center my-7 text-2xl">Đang tải...</p>}
-      {error && <p className="text-center my-7 text-2xl">Có lỗi xảy ra!</p>}
+      {loading && (
+        <p className="text-center my-7 text-2xl text-emerald-700">
+          Đang tải...
+        </p>
+      )}
+      {error && (
+        <p className="text-center my-7 text-2xl text-rose-700">
+          Có lỗi xảy ra!
+        </p>
+      )}
       {listing && !loading && !error && (
         <div>
           <Swiper navigation>
@@ -90,9 +98,9 @@ export default function Listing() {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="fixed top-[13%] right-[3%] z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-slate-100 cursor-pointer">
+          <div className="fixed top-[13%] right-[3%] z-10 border rounded-full w-12 h-12 flex justify-center items-center bg-emerald-100 cursor-pointer">
             <FaShare
-              className="text-slate-500"
+              className="text-emerald-700"
               onClick={() => {
                 navigator.clipboard.writeText(window.location.href);
                 setCopied(true);
@@ -103,29 +111,31 @@ export default function Listing() {
             />
           </div>
           {copied && (
-            <p className="fixed top-[23%] right-[5%] z-10 rounded-md bg-slate-100 p-2">
+            <p className="fixed top-[23%] right-[5%] z-10 rounded-md bg-emerald-100 p-2">
               Sao chép liên kết thành công!
             </p>
           )}
           <div className="flex flex-col max-w-4xl mx-auto p-3 my-7 gap-4">
-            <p className="font-semibold text-3xl">{listing.name}</p>
-            <p className="text-xl font-semibold">
+            <p className="font-bold text-emerald-700 text-3xl">
+              {listing.name}
+            </p>
+            <p className="text-xl font-semibold text-emerald-900">
               {listing.offer
                 ? listing.discountPrice.toLocaleString("vi-VN")
                 : listing.regularPrice.toLocaleString("vi-VN")}{" "}
               đồng{listing.type === "rent" && "/tháng"}
             </p>
 
-            <p className="flex items-center mt-4 gap-2 text-slate-600  text-sm">
+            <p className="flex items-center mt-4 gap-2 text-emerald-700  text-sm">
               <FaMapMarkerAlt className="text-green-700" />
               {listing.address}
             </p>
             <div className="flex gap-4">
-              <p className="bg-pink-600 w-full max-w-[200px] text-white text-sm font-medium text-center p-1 rounded-md">
+              <p className="bg-emerald-500 w-full max-w-[200px] text-white text-sm font-medium text-center p-1 rounded-md">
                 {listing.type === "rent" ? "Cho thuê" : "Nhà bán"}
               </p>
               {listing.offer && (
-                <p className="bg-green-600 w-full max-w-[200px] text-white text-sm font-medium text-center p-1 rounded-md">
+                <p className="bg-emerald-600 w-full max-w-[200px] text-white text-sm font-medium text-center p-1 rounded-md">
                   Giảm giá{" "}
                   {Math.ceil(
                     100 - (listing.discountPrice / listing.regularPrice) * 100
@@ -134,11 +144,11 @@ export default function Listing() {
                 </p>
               )}
             </div>
-            <p className="text-slate-800">
-              <span className="font-semibold text-black">Mô tả - </span>
+            <p className="text-emerald-700">
+              <span className="font-semibold text-emerald-950">Mô tả - </span>
               {listing.description}
             </p>
-            <ul className="text-green-900 font-medium text-sm flex flex-wrap items-center gap-4 sm:gap-6">
+            <ul className="text-emerald-900 font-medium text-sm flex flex-wrap items-center gap-4 sm:gap-6">
               <li className="flex items-center gap-1 whitespace-nowrap ">
                 <FaBed className="text-lg" />
                 {listing.bedrooms > 1 && `${listing.bedrooms} phòng ngủ`}
@@ -159,7 +169,7 @@ export default function Listing() {
             {currentUser && listing.userRef !== currentUser._id && !contact && (
               <button
                 onClick={() => setContact(true)}
-                className="bg-sky-500 text-white rounded-lg hover:opacity-80 px-5 py-2 font-medium"
+                className="bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 px-5 py-2 font-medium"
               >
                 Liên hệ người đăng
               </button>
@@ -200,7 +210,7 @@ export default function Listing() {
                             )}{" "}
                         đồng{suggestion.type === "rent" && "/tháng"}
                       </p>
-                      <p className="text-sm text-slate-600">
+                      <p className="text-sm text-emerald-900">
                         {suggestion.address}
                       </p>
                     </Link>

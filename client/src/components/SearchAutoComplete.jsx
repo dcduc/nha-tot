@@ -57,8 +57,8 @@ export default function SearchAutoComplete() {
   }, [search]);
 
   return (
-    <section className="py-2 px-5 h-15 flex flex-col items-center relative">
-      <div className="bg-white rounded-xl w-96 overflow-hidden flex items-center justify-between shadow-sm">
+    <section className="hidden py-2 px-5 h-15 md:flex flex-col items-center relative">
+      <div className="bg-white rounded-xl w-96 overflow-hidden flex items-center justify-between shadow-inner">
         <input
           type="text"
           className="flex-1 px-5 py-2 bg-transparent focus:outline-none"
@@ -68,11 +68,11 @@ export default function SearchAutoComplete() {
           value={search}
           onKeyDown={handleKeyDown}
         />
-        <div className="px-5 h-full flex items-center cursor-pointer">
+        <div className="px-5 h-full flex items-center cursor-pointer text-emerald-900">
           {search === "" ? <IoSearch /> : <IoClose onClick={handleClose} />}
         </div>
       </div>
-      <div className="bg-white w-96 mt-2 absolute top-11 rounded-xl">
+      <div className="bg-white w-96 mt-2 absolute top-11 rounded-xl text-emerald-900 shadow-2xl">
         {searchData.slice(0, 10).map((data, index) => {
           return (
             <a
@@ -82,8 +82,8 @@ export default function SearchAutoComplete() {
               rel="noreferrer"
               className={
                 selectedItem === index
-                  ? "hover:bg-gray-200 bg-gray-200 px-5 py-2.5 cursor-pointer block"
-                  : "hover:bg-gray-200 px-5 py-2.5 cursor-pointer block"
+                  ? "hover:bg-emerald-200 bg-emerald-200 px-5 py-2.5 cursor-pointer block"
+                  : "hover:bg-emerald-200 px-5 py-2.5 cursor-pointer block"
               }
             >
               {data.name}

@@ -162,7 +162,7 @@ export default function Profile() {
   };
   return (
     <div className="mx-auto max-w-lg p-3">
-      <h1 className="my-7 text-center text-3xl font-semibold">
+      <h1 className="my-7 text-center text-3xl font-semibold text-emerald-700">
         Thông tin cá nhân
       </h1>
       <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
@@ -182,13 +182,13 @@ export default function Profile() {
           />
           <p className="self-center text-sm">
             {fileUploadError ? (
-              <span className="text-red-700 font-semibold">
+              <span className="text-rose-700 font-semibold">
                 Lỗi khi tải ảnh lên (Ảnh phải nhỏ hơn 2MB và phải là ảnh)
               </span>
             ) : filePerc > 0 && filePerc < 100 ? (
-              <span className="text-slate-700">{`Đang tải ${filePerc}%`}</span>
+              <span className="text-emerald-600">{`Đang tải ${filePerc}%`}</span>
             ) : filePerc === 100 ? (
-              <span className="text-green-700 font-semibold">
+              <span className="text-emerald-700 font-semibold">
                 Tải ảnh lên thành công
               </span>
             ) : (
@@ -197,39 +197,39 @@ export default function Profile() {
           </p>
         </div>
         <div>
-          <label className="mb-2 block text-sm font-medium text-gray-900">
+          <label className="mb-2 block text-sm font-medium text-emerald-900">
             Email
           </label>
           <input
             type="email"
             placeholder="abc@example.com"
             defaultValue={currentUser.email}
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-slate-600 focus:ring-slate-600 sm:text-sm"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-emerald-900 focus:border-emerald-600 focus:ring-emerald-600 sm:text-sm"
             id="email"
             onChange={handleChange}
           />
         </div>
         <div>
-          <label className="mb-2 block text-sm font-medium text-gray-900">
+          <label className="mb-2 block text-sm font-medium text-emerald-900">
             Họ và tên
           </label>
           <input
             type="text"
             placeholder="Username"
             defaultValue={currentUser.username}
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-slate-600 focus:ring-slate-600 sm:text-sm"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-emerald-900 focus:border-emerald-600 focus:ring-emerald-600 sm:text-sm"
             id="username"
             onChange={handleChange}
           />
         </div>
         <div>
-          <label className="mb-2 block text-sm font-medium text-gray-900">
+          <label className="mb-2 block text-sm font-medium text-emerald-900">
             Mật khẩu
           </label>
           <input
             type="password"
             placeholder="Password"
-            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-slate-600 focus:ring-slate-600 sm:text-sm"
+            className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-emerald-900 focus:border-emerald-600 focus:ring-emerald-600 sm:text-sm"
             id="password"
             onChange={handleChange}
             autoComplete="on"
@@ -237,12 +237,12 @@ export default function Profile() {
         </div>
         <button
           disabled={loading}
-          className="w-full rounded-lg bg-orange-500 px-5 py-2 text-center text-sm font-medium text-white hover:opacity-75 focus:outline-none focus:ring-4 focus:ring-slate-300"
+          className="w-full rounded-lg bg-emerald-500 px-5 py-2 text-center text-sm font-medium text-white hover:bg-emerald-600 focus:outline-none focus:ring-4 focus:ring-emerald-300"
         >
           {loading ? "Loading..." : "Cập nhật thông tin"}
         </button>
         <Link to={"/create-listing"}>
-          <button className="mt-5 w-full rounded-lg bg-green-500 px-5 py-2 text-center text-sm font-medium text-white hover:opacity-75 focus:outline-none focus:ring-4 focus:ring-slate-300">
+          <button className="mt-5 w-full rounded-lg bg-teal-500 px-5 py-2 text-center text-sm font-medium text-white hover:bg-teal-600 focus:outline-none focus:ring-4 focus:ring-emerald-300">
             Thêm bài đăng
           </button>
         </Link>
@@ -250,29 +250,29 @@ export default function Profile() {
       <div className="mt-5 flex justify-between">
         <button
           onClick={handleDeleteUser}
-          className="transition-color cursor-pointer rounded-lg bg-red-500 px-5 py-2 text-sm font-medium text-white hover:opacity-75"
+          className="transition-color cursor-pointer rounded-lg bg-rose-500 px-5 py-2 text-sm font-medium text-white hover:bg-rose-600"
         >
           Xóa tài khoản
         </button>
         <button
           onClick={handleSignOut}
-          className="transition-color cursor-pointer rounded-lg bg-yellow-500 px-5 py-2 text-sm font-medium text-white hover:opacity-75"
+          className="transition-color cursor-pointer rounded-lg bg-yellow-500 px-5 py-2 text-sm font-medium text-white hover:bg-yellow-600"
         >
           Đăng xuất
         </button>
       </div>
 
-      <p className="my-5 font-semibold text-red-700">{error ? error : ""}</p>
-      <p className="my-5 font-semibold text-green-700">
+      <p className="my-5 font-semibold text-rose-700">{error ? error : ""}</p>
+      <p className="my-5 font-semibold text-emerald-700">
         {updateSuccess ? "User is updated successfully!" : ""}
       </p>
       <button
         onClick={handleShowListings}
-        className="transition-color w-full cursor-pointer rounded-lg bg-sky-500 px-5 py-2 text-sm font-medium text-white hover:opacity-75"
+        className="transition-color w-full cursor-pointer rounded-lg bg-cyan-500 px-5 py-2 text-sm font-medium text-white hover:bg-cyan-600"
       >
         Xem bài đăng của bạn
       </button>
-      <p className="mt-5 text-red-700">
+      <p className="mt-5 text-rose-700">
         {showListingsError ? "Error showing listings" : ""}
       </p>
 
@@ -284,17 +284,17 @@ export default function Profile() {
           {userListings.map((listing) => (
             <div
               key={listing._id}
-              className="flex items-center justify-between gap-4 rounded-lg border p-3 focus:outline-none focus:ring-4 focus:ring-slate-300"
+              className="flex items-center justify-between gap-4 rounded-lg border p-3 focus:outline-none focus:ring-4 focus:ring-emerald-300"
             >
               <Link to={`/listing/${listing._id}`}>
                 <img
                   src={listing.imageUrls[0]}
                   alt="listing cover"
-                  className="h-24 w-24 rounded-lg border border-slate-300 object-contain hover:opacity-75"
+                  className="h-24 w-24 rounded-lg border border-emerald-200 object-contain hover:opacity-75"
                 />
               </Link>
               <Link
-                className="flex-1 truncate font-semibold text-slate-700 hover:underline"
+                className="flex-1 truncate font-semibold text-emerald-700 hover:underline"
                 to={`/listing/${listing._id}`}
               >
                 <p>{listing.name}</p>
@@ -303,7 +303,7 @@ export default function Profile() {
               <div className="item-center flex flex-col">
                 <button
                   onClick={() => handleListingDelete(listing._id)}
-                  className="transition-color w-full cursor-pointer rounded-lg bg-red-500 px-5 py-2 text-sm font-medium text-white hover:opacity-75"
+                  className="transition-color w-full cursor-pointer rounded-lg bg-rose-500 px-5 py-2 text-sm font-medium text-white hover:opacity-75"
                 >
                   Xóa
                 </button>

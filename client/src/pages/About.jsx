@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 export default function About() {
   return (
-    <div className="bg-gray-100 p-6">
+    <div className="bg-emerald-50 p-6">
       <div className="container mx-auto rounded-lg bg-white p-6 shadow-md">
-        <h1 className="mb-6 text-center text-3xl font-bold text-slate-600">
+        <h1 className="mb-6 text-center text-3xl font-bold text-emerald-700">
           Chào mừng đến với Trang Web Cho Thuê và Bán Nhà Đất của Chúng Tôi!
         </h1>
-        <p className="mb-4 text-lg text-gray-700">
+        <p className="mb-4 text-lg text-emerald-700">
           Chào mừng bạn đến với <strong>NhaTot</strong>, nơi mang đến giải pháp
           toàn diện cho nhu cầu tìm kiếm và đăng tin cho thuê hoặc bán nhà đất,
           phòng trọ, và căn hộ. Chúng tôi hiểu rằng việc tìm kiếm một ngôi nhà
@@ -18,10 +18,10 @@ export default function About() {
           một cách dễ dàng.
         </p>
 
-        <h2 className="mb-4 text-2xl font-semibold text-slate-500">
+        <h2 className="mb-4 text-2xl font-semibold text-emerald-700">
           Tại Sao Chọn Chúng Tôi?
         </h2>
-        <ul className="mb-4 list-inside list-disc text-gray-700">
+        <ul className="mb-4 list-inside list-disc text-emerald-700">
           <li>
             <strong>Giao Diện Thân Thiện:</strong> Giao diện trực quan và dễ sử
             dụng của chúng tôi giúp bạn dễ dàng đăng tin hoặc tìm kiếm bất động
@@ -44,10 +44,10 @@ export default function About() {
           </li>
         </ul>
 
-        <h2 className="mb-4 text-2xl font-semibold text-slate-500">
+        <h2 className="mb-4 text-2xl font-semibold text-emerald-700">
           Cách Thức Hoạt Động
         </h2>
-        <ol className="mb-4 list-inside list-decimal text-gray-700">
+        <ol className="mb-4 list-inside list-decimal text-emerald-700">
           <li>
             <strong>Đăng Ký Tài Khoản:</strong> Đăng ký một tài khoản miễn phí
             để bắt đầu đăng tin hoặc tìm kiếm bất động sản.
@@ -65,20 +65,20 @@ export default function About() {
           </li>
         </ol>
 
-        <h2 className="mb-4 text-2xl font-semibold text-slate-500">
+        <h2 className="mb-4 text-2xl font-semibold text-emerald-700">
           Dịch Vụ Hỗ Trợ
         </h2>
-        <p className="mb-4 text-lg text-gray-700">
+        <p className="mb-4 text-lg text-emerald-700">
           Đội ngũ hỗ trợ khách hàng của chúng tôi luôn sẵn sàng giúp đỡ bạn 24/7
           qua email, điện thoại, và chat trực tuyến. Chúng tôi ở đây để giải đáp
           mọi thắc mắc và giúp bạn giải quyết mọi vấn đề phát sinh trong quá
           trình sử dụng trang web.
         </p>
 
-        <h2 className="mb-4 text-2xl font-semibold text-slate-500">
+        <h2 className="mb-4 text-2xl font-semibold text-emerald-700">
           Câu Chuyện Thành Công
         </h2>
-        <p className="mb-4 text-lg text-gray-700">
+        <p className="mb-4 text-lg text-emerald-700">
           Hàng nghìn khách hàng đã tìm thấy ngôi nhà mơ ước hoặc những người
           thuê nhà hoàn hảo thông qua nền tảng của chúng tôi. Hãy tham gia cùng
           cộng đồng của chúng tôi và trải nghiệm dịch vụ tuyệt vời mà chúng tôi
@@ -87,7 +87,7 @@ export default function About() {
 
         <div className="mt-6 text-center">
           <Link to={"/"}>
-            <button className="rounded-lg bg-slate-600 px-4 py-2 text-white transition-all hover:scale-110 hover:bg-slate-700">
+            <button className="rounded-lg bg-emerald-500 px-4 py-2 text-white transition-all hover:scale-110 hover:bg-emerald-600">
               Khám Phá Ngay
             </button>
           </Link>
