@@ -90,6 +90,7 @@ export default function SignIn() {
               <Link
                 to={"/sign-up"}
                 className="text-emerald-900 font-medium hover:underline"
+                aria-label="Sign Up"
               >
                 Đăng ký ngay
               </Link>

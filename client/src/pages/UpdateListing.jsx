@@ -163,7 +163,7 @@ export default function UpdateListing() {
       if (data.success === false) {
         setError(data.message);
       }
-      navigate(`/listing/${data._id}`);
+      navigate(`/listing/${data.slug}`);
     } catch (error) {
       setError(error.message);
       setLoading(false);
@@ -289,7 +289,7 @@ export default function UpdateListing() {
                 type="number"
                 id="regularPrice"
                 min="1"
-                max="1000000000"
+                max="100000000000"
                 required
                 className="rounded-lg border border-gray-300 px-5 py-2"
                 onChange={handleChange}

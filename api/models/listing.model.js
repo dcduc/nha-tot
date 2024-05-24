@@ -1,10 +1,16 @@
 import mongoose from "mongoose";
+import slugify from "slugify";
 
 const listingSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
+      trim: true,
+    },
+    slug: {
+      type: String,
+      unique: true,
       trim: true,
     },
     description: {
@@ -72,6 +78,13 @@ const listingSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+listingSchema.pre("save", function (next) {
+  if (this.isModified("name")) {
+    this.slug = slugify(this.name, { lower: true, strict: true });
+  }
+  next();
+});
 
 const Listing = mongoose.model("Listing", listingSchema);
 

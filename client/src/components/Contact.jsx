@@ -45,6 +45,7 @@ export default function Contact({ listing }) {
               landlord.email
             }?subject=Về ${listing.name.toLowerCase()}&body=${message}`}
             className="bg-emerald-500 text-white font-medium text-center py-2 px-5 rounded-lg hover:bg-emerald-600 transition-all"
+            aria-label="Gửi tin nhắn"
           >
             Gửi tin nhắn
           </Link>

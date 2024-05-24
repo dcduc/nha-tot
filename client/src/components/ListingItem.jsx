@@ -5,7 +5,7 @@ import { FaBath, FaBed } from "react-icons/fa";
 export default function ListingItem({ listing }) {
   return (
     <div className="bg-white shadow-md hover:shadow-lg transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]">
-      <Link to={`/listing/${listing._id}`}>
+      <Link to={`/listing/${listing.slug}`} aria-label={`${listing.name}`}>
         <img
           src={
             listing.imageUrls[0] ||

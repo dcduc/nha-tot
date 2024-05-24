@@ -58,6 +58,7 @@ export default function Home() {
         <Link
           to={"/search"}
           className="text-xs sm:text-sm text-emerald-900 font-bold hover:underline"
+          aria-label="View all listings"
         >
           Xem tất cả
         </Link>
@@ -68,7 +69,7 @@ export default function Home() {
         {offerListings &&
           offerListings.length > 0 &&
           offerListings.map((listing) => (
-            <SwiperSlide key={listing._id}>
+            <SwiperSlide key={listing.slug}>
               <div
                 style={{
                   background: `url(${listing.imageUrls[0]}) center no-repeat`,
@@ -92,13 +93,14 @@ export default function Home() {
               <Link
                 className="text-sm text-emerald-700 hover:underline"
                 to={"/search?offer=true"}
+                aria-label="View more offers"
               >
                 Xem thêm các offers
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">
               {offerListings.map((listing) => (
-                <ListingItem listing={listing} key={listing._id} />
+                <ListingItem listing={listing} key={listing.slug} />
               ))}
             </div>
           </div>
@@ -112,13 +114,14 @@ export default function Home() {
               <Link
                 className="text-sm text-emerald-700 hover:underline"
                 to={"/search?type=rent"}
+                aria-label="View more rental listings"
               >
                 Xem thêm nhà cho thuê
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">
               {rentListings.map((listing) => (
-                <ListingItem listing={listing} key={listing._id} />
+                <ListingItem listing={listing} key={listing.slug} />
               ))}
             </div>
           </div>
@@ -132,13 +135,14 @@ export default function Home() {
               <Link
                 className="text-sm text-emerald-700 hover:underline"
                 to={"/search?type=sale"}
+                aria-label="View more sale listings"
               >
                 Xem thêm nhà bán
               </Link>
             </div>
             <div className="flex flex-wrap gap-4">
               {saleListings.map((listing) => (
-                <ListingItem listing={listing} key={listing._id} />
+                <ListingItem listing={listing} key={listing.slug} />
               ))}
             </div>
           </div>

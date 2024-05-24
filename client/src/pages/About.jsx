@@ -86,7 +86,7 @@ export default function About() {
         </p>
 
         <div className="mt-6 text-center">
-          <Link to={"/"}>
+          <Link to={"/"} aria-label="Home">
             <button className="rounded-lg bg-emerald-500 px-4 py-2 text-white transition-all hover:scale-110 hover:bg-emerald-600">
               Khám Phá Ngay
             </button>

@@ -76,7 +76,7 @@ export default function SearchAutoComplete() {
         {searchData.slice(0, 10).map((data, index) => {
           return (
             <a
-              href={`/listing/${data._id}`}
+              href={`/listing/${data.slug}`}
               key={index}
               target="_blank"
               rel="noreferrer"
@@ -85,6 +85,7 @@ export default function SearchAutoComplete() {
                   ? "hover:bg-emerald-200 bg-emerald-200 px-5 py-2.5 cursor-pointer block"
                   : "hover:bg-emerald-200 px-5 py-2.5 cursor-pointer block"
               }
+              aria-label={data.name} // Add aria-label attribute
             >
               {data.name}
             </a>

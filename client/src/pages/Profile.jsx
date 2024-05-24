@@ -241,7 +241,7 @@ export default function Profile() {
         >
           {loading ? "Loading..." : "Cập nhật thông tin"}
         </button>
-        <Link to={"/create-listing"}>
+        <Link to={"/create-listing"} aria-label="Create listing">
           <button className="mt-5 w-full rounded-lg bg-teal-500 px-5 py-2 text-center text-sm font-medium text-white hover:bg-teal-600 focus:outline-none focus:ring-4 focus:ring-emerald-300">
             Thêm bài đăng
           </button>
@@ -264,7 +264,7 @@ export default function Profile() {
 
       <p className="my-5 font-semibold text-rose-700">{error ? error : ""}</p>
       <p className="my-5 font-semibold text-emerald-700">
-        {updateSuccess ? "User is updated successfully!" : ""}
+        {updateSuccess ? "Cập nhật thông tin thành công!" : ""}
       </p>
       <button
         onClick={handleShowListings}
@@ -283,10 +283,13 @@ export default function Profile() {
           </h1>
           {userListings.map((listing) => (
             <div
-              key={listing._id}
+              key={listing.slug}
               className="flex items-center justify-between gap-4 rounded-lg border p-3 focus:outline-none focus:ring-4 focus:ring-emerald-300"
             >
-              <Link to={`/listing/${listing._id}`}>
+              <Link
+                to={`/listing/${listing.slug}`}
+                aria-label={`${listing.name}`}
+              >
                 <img
                   src={listing.imageUrls[0]}
                   alt="listing cover"
@@ -295,19 +298,23 @@ export default function Profile() {
               </Link>
               <Link
                 className="flex-1 truncate font-semibold text-emerald-700 hover:underline"
-                to={`/listing/${listing._id}`}
+                to={`/listing/${listing.slug}`}
+                aria-label={`${listing.name}`}
               >
                 <p>{listing.name}</p>
               </Link>
 
               <div className="item-center flex flex-col">
                 <button
-                  onClick={() => handleListingDelete(listing._id)}
+                  onClick={() => handleListingDelete(listing.slug)}
                   className="transition-color w-full cursor-pointer rounded-lg bg-rose-500 px-5 py-2 text-sm font-medium text-white hover:opacity-75"
                 >
                   Xóa
                 </button>
-                <Link to={`/update-listing/${listing._id}`}>
+                <Link
+                  to={`/update-listing/${listing.slug}`}
+                  aria-label={`${listing.name}`}
+                >
                   <button className="transition-color mt-4 w-full cursor-pointer rounded-lg bg-yellow-500 px-5 py-2 text-sm font-medium text-white hover:opacity-75">
                     Cập nhật
                   </button>

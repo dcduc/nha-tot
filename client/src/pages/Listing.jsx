@@ -180,11 +180,12 @@ export default function Listing() {
           {suggestions && suggestions.length > 0 && (
             <div className="max-w-4xl mx-auto p-3 my-7">
               <h2 className="text-2xl font-semibold mb-4">
-                Xem thêm tại khu vực này
+                Xem thêm {listing.type === "rent" ? "nhà thuê" : "nhà bán"} tại
+                khu vực này
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {suggestions.slice(0, 6).map((suggestion) => (
-                  <div key={suggestion._id} className="border p-3 rounded-md">
+                  <div key={suggestion.slug} className="border p-3 rounded-md">
                     <Swiper navigation>
                       {suggestion.imageUrls.map((url) => (
                         <SwiperSlide key={url}>
@@ -198,11 +199,14 @@ export default function Listing() {
                         </SwiperSlide>
                       ))}
                     </Swiper>
-                    <Link to={`/listing/${suggestion._id}`}>
-                      <p className="font-semibold text-lg mt-2 hover:underline">
+                    <Link
+                      to={`/listing/${suggestion.slug}`}
+                      aria-label={suggestion.name}
+                    >
+                      <p className="font-semibold text-lg mt-2 hover:underline text-emerald-700">
                         {suggestion.name}
                       </p>
-                      <p className="text-md font-semibold">
+                      <p className="text-sm font-semibold text-emerald-900 mt-2">
                         {suggestion.offer
                           ? suggestion.discountPrice.toLocaleString("vi-VN")
                           : suggestion.regularPrice.toLocaleString(
@@ -210,7 +214,7 @@ export default function Listing() {
                             )}{" "}
                         đồng{suggestion.type === "rent" && "/tháng"}
                       </p>
-                      <p className="text-sm text-emerald-900">
+                      <p className="text-sm text-emerald-900 mt-2">
                         {suggestion.address}
                       </p>
                     </Link>

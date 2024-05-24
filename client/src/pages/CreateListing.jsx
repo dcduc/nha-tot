@@ -58,6 +58,7 @@ export default function CreateListing() {
           setUploading(false);
         })
         .catch((err) => {
+          console.log(err.message);
           setImageUploadError("Lỗi khi tải ảnh lên (Ảnh phải nhỏ hơn 2MB)");
           setUploading(false);
         });
@@ -154,7 +155,7 @@ export default function CreateListing() {
       if (data.success === false) {
         setError(data.message);
       }
-      navigate(`/listing/${data._id}`);
+      navigate(`/listing/${data.slug}`);
     } catch (error) {
       setError(error.message);
       setLoading(false);
@@ -388,7 +389,7 @@ export default function CreateListing() {
                 type="number"
                 id="regularPrice"
                 min="1"
-                max="1000000000" // 1 billion
+                max="100000000000" // 1 billion
                 required
                 className="rounded-lg border border-gray-300 px-5 py-2"
                 onChange={handleChange}

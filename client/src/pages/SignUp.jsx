@@ -99,6 +99,7 @@ export default function SignUp() {
               <Link
                 to={"/sign-in"}
                 className="text-emerald-900 font-medium hover:underline"
+                aria-label="Sign In"
               >
                 Đăng nhập ngay
               </Link>
