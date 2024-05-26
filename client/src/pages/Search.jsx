@@ -224,7 +224,7 @@ export default function Search() {
               <option value="createdAt_asc">Cũ nhất</option>
             </select>
           </div>
-          <button className="bg-emerald-500 text-white px-5 py-2 font-md rounded-lg hover:bg-emerald-600">
+          <button className="bg-emerald-500 text-white px-5 py-2 font-medium rounded-lg hover:bg-emerald-600">
             Tìm kiếm
           </button>
         </form>

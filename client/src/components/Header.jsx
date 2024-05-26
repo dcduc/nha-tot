@@ -35,29 +35,35 @@ export default function Header() {
         </Link>
         <SearchAutoComplete />
         <ul className="flex gap-12 text-emerald-800">
-          <Link to="/" aria-label="Home">
-            <li className="hidden font-semibold transition-transform hover:scale-110 sm:block">
-              Trang chủ
-            </li>
-          </Link>
-          <Link to="/about" aria-label="About">
-            <li className="hidden font-semibold transition-transform hover:scale-110 sm:block">
-              Về chúng tôi
-            </li>
-          </Link>
-          <Link to="/profile" aria-label="Profile">
-            {currentUser ? (
-              <img
-                className="h-7 w-7 rounded-full border-2 border-emerald-800 object-cover transition-transform hover:scale-110"
-                src={currentUser.avatar}
-                alt="profile"
-              />
-            ) : (
-              <li className="text-emerald-800 font-bold transition-transform hover:scale-110">
-                Đăng nhập
-              </li>
-            )}
-          </Link>
+          <li>
+            <Link to="/" aria-label="Home">
+              <span className="hidden font-semibold transition-transform hover:scale-110 sm:block">
+                Trang chủ
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/about" aria-label="About">
+              <span className="hidden font-semibold transition-transform hover:scale-110 sm:block">
+                Về chúng tôi
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/profile" aria-label="Profile">
+              {currentUser ? (
+                <img
+                  className="h-7 w-7 rounded-full border-2 border-emerald-800 object-cover transition-transform hover:scale-110"
+                  src={currentUser.avatar}
+                  alt="profile"
+                />
+              ) : (
+                <span className="text-emerald-800 font-bold transition-transform hover:scale-110">
+                  Đăng nhập
+                </span>
+              )}
+            </Link>
+          </li>
         </ul>
       </div>
     </header>

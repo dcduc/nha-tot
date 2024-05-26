@@ -332,7 +332,7 @@ export default function UpdateListing() {
         <div className="flex flex-col flex-1 gap-4 text-emerald-700">
           <p className="font-semibold">
             Hình ảnh (tối đa 6):
-            <span className="font-normal text-emerald-700 ml-2">
+            <span className="font-medium text-emerald-700 ml-2">
               Ảnh đầu tiên sẽ được làm thumbnail cho bài đăng
             </span>
           </p>

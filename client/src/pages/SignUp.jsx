@@ -94,7 +94,7 @@ export default function SignUp() {
               {loading ? "Đang tạo tài khoản..." : "Tạo tài khoản"}
             </button>
             <OAuth />
-            <p className="text-sm font-light text-emerald-700">
+            <p className="text-sm font-medium text-emerald-700">
               Bạn đã có tài khoản?{" "}
               <Link
                 to={"/sign-in"}

@@ -85,7 +85,7 @@ export default function SignIn() {
               {loading ? "Đang đăng nhập..." : "Đăng nhập"}
             </button>
             <OAuth />
-            <p className="text-sm font-light text-emerald-700">
+            <p className="text-sm font-medium text-emerald-700">
               Bạn chưa có tài khoản?{" "}
               <Link
                 to={"/sign-up"}
