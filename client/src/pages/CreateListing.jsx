@@ -38,8 +38,14 @@ export default function CreateListing() {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  console.log(formData);
-  const handleImageSubmit = (e) => {
+
+  formData.address = `${houseNumber}, ${
+    wards.find((ward) => ward.Id === selectedWard)?.Name || ""
+  }, ${
+    districts.find((district) => district.Id === selectedDistrict)?.Name || ""
+  }, ${cities.find((city) => city.Id === selectedCity)?.Name || ""}`;
+
+  const handleImageSubmit = () => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
       setUploading(true);
       setImageUploadError(false);
@@ -289,22 +295,6 @@ export default function CreateListing() {
               value={houseNumber}
             />
           </div>
-          <input
-            hidden
-            type="text"
-            id="address"
-            value={
-              (formData.address =
-                houseNumber +
-                ", " +
-                wards.find((ward) => ward.Id === selectedWard)?.Name +
-                ", " +
-                districts.find((district) => district.Id === selectedDistrict)
-                  ?.Name +
-                ", " +
-                cities.find((city) => city.Id === selectedCity)?.Name)
-            }
-          />
           <div className="flex flex-wrap gap-6 text-emerald-700">
             <div className="flex gap-2">
               <input
@@ -410,7 +400,7 @@ export default function CreateListing() {
                   type="number"
                   id="discountPrice"
                   min="0"
-                  max="10000000"
+                  max="100000000000"
                   required
                   className="rounded-lg border border-gray-300 px-5 py-2"
                   onChange={handleChange}

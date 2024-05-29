@@ -36,11 +36,11 @@ export default function ListingItem({ listing }) {
           <div className="flex text-emerald-900 gap-4 mt-2">
             <div className="flex font-bold text-xs justify-between">
               <FaBed className="text-sm mr-2" />
-              {listing.bedrooms > 1 && `${listing.bedrooms} phòng ngủ`}
+              {listing.bedrooms && `${listing.bedrooms} phòng ngủ`}
             </div>
             <div className="flex font-bold text-xs justify-between">
               <FaBath className="text-sm mr-2" />
-              {listing.bathrooms > 1 && `${listing.bathrooms} phòng tắm`}
+              {listing.bathrooms && `${listing.bathrooms} phòng tắm`}
             </div>
           </div>
         </div>

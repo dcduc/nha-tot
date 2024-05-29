@@ -35,8 +35,8 @@ export default function UpdateListing() {
 
   useEffect(() => {
     const fetchListing = async () => {
-      const listingId = params.listingId;
-      const res = await fetch(`/api/listing/get/${listingId}`);
+      const listingSlug = params.listingSlug;
+      const res = await fetch(`/api/listing/get/${listingSlug}`);
       const data = await res.json();
       if (data.success === false) {
         console.log(data.message);
@@ -46,7 +46,7 @@ export default function UpdateListing() {
     };
 
     fetchListing();
-  }, []);
+  }, [params.listingSlug]);
 
   const handleImageSubmit = (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
@@ -148,7 +148,7 @@ export default function UpdateListing() {
         return setError("Giá giảm phải nhỏ hơn giá thường");
       setLoading(true);
       setError(false);
-      const res = await fetch(`/api/listing/update/${params.listingId}`, {
+      const res = await fetch(`/api/listing/update/${params.listingSlug}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

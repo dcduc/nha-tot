@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { IoSearch, IoClose } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 export default function SearchAutoComplete() {
   const [search, setSearch] = useState("");
@@ -75,20 +76,35 @@ export default function SearchAutoComplete() {
       <div className="bg-white w-96 mt-2 absolute top-11 rounded-xl text-emerald-900 shadow-2xl">
         {searchData.slice(0, 10).map((data, index) => {
           return (
-            <a
-              href={`/listing/${data.slug}`}
-              key={index}
-              target="_blank"
-              rel="noreferrer"
-              className={
-                selectedItem === index
-                  ? "hover:bg-emerald-200 bg-emerald-200 px-5 py-2.5 cursor-pointer block"
-                  : "hover:bg-emerald-200 px-5 py-2.5 cursor-pointer block"
-              }
-              aria-label={data.name} // Add aria-label attribute
-            >
-              {data.name}
-            </a>
+            <>
+              {/* <a
+                href={`/listing/${data.slug}`}
+                key={index}
+                target="_blank"
+                rel="noreferrer"
+                className={
+                  selectedItem === index
+                    ? "hover:bg-emerald-200 bg-emerald-200 px-5 py-2.5 cursor-pointer block"
+                    : "hover:bg-emerald-200 px-5 py-2.5 cursor-pointer block"
+                }
+                aria-label={data.name} // Add aria-label attribute
+              >
+                {data.name}
+              </a> */}
+              <Link
+                to={`/listing/${data.slug}`}
+                aria-label={`${data.name}`}
+                className={
+                  selectedItem === index
+                    ? "hover:bg-emerald-200 bg-emerald-200 px-5 py-2.5 cursor-pointer block"
+                    : "hover:bg-emerald-200 px-5 py-2.5 cursor-pointer block"
+                }
+                key={index}
+                target="_blank"
+              >
+                {data.name}
+              </Link>
+            </>
           );
         })}
       </div>

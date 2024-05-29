@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import { useSelector } from "react-redux";
@@ -15,6 +15,7 @@ import {
 } from "react-icons/fa";
 import Contact from "../components/Contact";
 import Map from "../components/Map";
+import ListingItem from "../components/ListingItem";
 
 // https://sabe.io/blog/javascript-format-numbers-commas#:~:text=The%20best%20way%20to%20format,format%20the%20number%20with%20commas.
 
@@ -33,7 +34,7 @@ export default function Listing() {
     const fetchListing = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`/api/listing/get/${params.listingId}`);
+        const res = await fetch(`/api/listing/get/${params.listingSlug}`);
         const data = await res.json();
         if (data.success === false) {
           setError(true);
@@ -43,23 +44,33 @@ export default function Listing() {
         setListing(data);
         setLoading(false);
         setError(false);
+      } catch (error) {
+        setError(true);
+        setLoading(true);
+      }
+    };
+    fetchListing();
+  }, [params.listingSlug]);
 
+  useEffect(() => {
+    const fetchSuggestions = async () => {
+      try {
         // Fetch all listings to find suggestions
         const allListingsRes = await fetch(`/api/listing/get`);
         const allListingsData = await allListingsRes.json();
         if (allListingsData.success === false) {
           setError(true);
+          setLoading(false);
           return;
         }
-        // const allListings = allListingsData.listings;
 
         // Extract the district from the current listing address
-        const district = data.address.split(", ").slice(-3).join(", ");
+        const district = listing.address.split(", ").slice(-3).join(", ");
 
         // Find listings in the same district
         const similarListings = allListingsData.filter(
-          (listing) =>
-            listing.address.includes(district) && listing._id !== data._id
+          (lst) =>
+            lst.address.includes(district) && lst.slug !== params.listingSlug
         );
 
         setSuggestions(similarListings);
@@ -68,8 +79,8 @@ export default function Listing() {
         setLoading(false);
       }
     };
-    fetchListing();
-  }, [params.listingId]);
+    fetchSuggestions();
+  }, [listing, params.listingSlug]);
 
   return (
     <main>
@@ -151,11 +162,11 @@ export default function Listing() {
             <ul className="text-emerald-900 font-medium text-sm flex flex-wrap items-center gap-4 sm:gap-6">
               <li className="flex items-center gap-1 whitespace-nowrap ">
                 <FaBed className="text-lg" />
-                {listing.bedrooms > 1 && `${listing.bedrooms} phòng ngủ`}
+                {listing.bedrooms && `${listing.bedrooms} phòng ngủ`}
               </li>
               <li className="flex items-center gap-1 whitespace-nowrap ">
                 <FaBath className="text-lg" />
-                {listing.bathrooms > 1 && `${listing.bathrooms} phòng tắm`}
+                {listing.bathrooms && `${listing.bathrooms} phòng tắm`}
               </li>
               <li className="flex items-center gap-1 whitespace-nowrap ">
                 <FaParking className="text-lg" />
@@ -185,40 +196,41 @@ export default function Listing() {
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {suggestions.slice(0, 6).map((suggestion) => (
-                  <div key={suggestion.slug} className="border p-3 rounded-md">
-                    <Swiper navigation>
-                      {suggestion.imageUrls.map((url) => (
-                        <SwiperSlide key={url}>
-                          <div
-                            className="h-40"
-                            style={{
-                              background: `url(${url}) center no-repeat`,
-                              backgroundSize: "cover",
-                            }}
-                          ></div>
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
-                    <Link
-                      to={`/listing/${suggestion.slug}`}
-                      aria-label={suggestion.name}
-                    >
-                      <p className="font-semibold text-lg mt-2 hover:underline text-emerald-700">
-                        {suggestion.name}
-                      </p>
-                      <p className="text-sm font-semibold text-emerald-900 mt-2">
-                        {suggestion.offer
-                          ? suggestion.discountPrice.toLocaleString("vi-VN")
-                          : suggestion.regularPrice.toLocaleString(
-                              "vi-VN"
-                            )}{" "}
-                        đồng{suggestion.type === "rent" && "/tháng"}
-                      </p>
-                      <p className="text-sm text-emerald-900 mt-2">
-                        {suggestion.address}
-                      </p>
-                    </Link>
-                  </div>
+                  // <div key={suggestion.slug} className="border p-3 rounded-md">
+                  //   <Swiper navigation>
+                  //     {suggestion.imageUrls.map((url) => (
+                  //       <SwiperSlide key={url}>
+                  //         <div
+                  //           className="h-40"
+                  //           style={{
+                  //             background: `url(${url}) center no-repeat`,
+                  //             backgroundSize: "cover",
+                  //           }}
+                  //         ></div>
+                  //       </SwiperSlide>
+                  //     ))}
+                  //   </Swiper>
+                  //   <Link
+                  //     to={`/listing/${suggestion.slug}`}
+                  //     aria-label={suggestion.name}
+                  //   >
+                  //     <p className="font-semibold text-lg mt-2 hover:underline text-emerald-700">
+                  //       {suggestion.name}
+                  //     </p>
+                  //     <p className="text-sm font-semibold text-emerald-900 mt-2">
+                  //       {suggestion.offer
+                  //         ? suggestion.discountPrice.toLocaleString("vi-VN")
+                  //         : suggestion.regularPrice.toLocaleString(
+                  //             "vi-VN"
+                  //           )}{" "}
+                  //       đồng{suggestion.type === "rent" && "/tháng"}
+                  //     </p>
+                  //     <p className="text-sm text-emerald-900 mt-2">
+                  //       {suggestion.address}
+                  //     </p>
+                  //   </Link>
+                  // </div>
+                  <ListingItem key={suggestion.slug} listing={suggestion} />
                 ))}
               </div>
             </div>

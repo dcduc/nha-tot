@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -19,20 +20,24 @@ const GeoCoderMarker = ({ address }) => {
   useEffect(() => {
     ELG.geocode()
       .text(address)
-      .run((err, results, response) => {
+      .run((_, results) => {
         if (results?.results?.length > 0) {
-          const { lat, lng } = results?.results[0].latlng;
+          const { lat, lng } = results?.results[0]?.latlng ?? {};
           setPosition([lat, lng]);
           map.flyTo([lat, lng], 15);
         }
       });
-  }, [address]);
+  }, [address, map]);
 
   return (
     <Marker position={position} icon={DefaulIcon}>
       <Popup />
     </Marker>
   );
+};
+
+GeoCoderMarker.propTypes = {
+  address: PropTypes.string.isRequired,
 };
 
 export default GeoCoderMarker;
