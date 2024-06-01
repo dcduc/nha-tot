@@ -20,21 +20,15 @@ export default function Map({ address }) {
   useEffect(() => {
     const fetchPosition = async () => {
       try {
-        const response = await axios.get(
-          `https://nominatim.openstreetmap.org/search`,
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?q=${address}&format=json&addressdetails=1&limit=1`,
           {
-            params: {
-              q: address,
-              format: "json",
-              addressdetails: 1,
-              limit: 1,
-            },
             headers: {
-              "Accept-Language": "en", // Thiết lập ngôn ngữ phản hồi
+              "Accept-Language": "en",
             },
           }
         );
-        const results = response.data;
+        const results = await response.json();
         if (results && results.length > 0) {
           const { lat, lon } = results[0];
           setPosition([parseFloat(lat), parseFloat(lon)]);
