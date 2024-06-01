@@ -11,46 +11,44 @@
 ```bash
 git clone https://github.com/dcduc/nha-tot.git
 cd nha-tot
-npm install
+npm run build
 npm run dev
 ```
 
-## Functions
+## Tính năng cơ bản
 
-- Xác thực
-  - [x] Đăng nhập
+- [ ] Xác thực
   - [x] Đăng ký
+  - [x] Đăng nhập
   - [x] Đăng xuất
-  - [x] Oauth2 (Google)
-- Người dùng
-  - [x] Cập nhật thông tin
+  - [x] OAuth2 (Google)
+- [ ] User
   - [x] Truy xuất thông tin
+  - [x] Cập nhật thông tin
   - [x] Xóa tài khoản
-- Bài đăng
-  - [x] Đăng bài
-  - [x] List bài đăng của mình
+- [ ] Post
+  - [x] Tạo bài đăng
+  - [x] List các bài đăng của mình
   - [x] List tất cả bài đăng
   - [x] Tìm kiếm
   - [x] Tìm kiếm nâng cao
   - [x] Xóa bài đăng
   - [x] Cập nhật bài đăng
 
-## Advance
+## Tính năng nâng cao
 
-- [x] HTTPS
-- [x] Mobile
-- Chức năng
-  - [x] Search auto complete
-  - [x] Post recommend
-  - [x] Load map for post
-  - [x] Gợi ý tỉnh thành phố
+- [x] Search suggestion
+- [x] Post recommend
+- [x] Maps
+- [x] DIstrict, city, province suggestion
 
-## Others
+## Tiêu chí điểm cộng
 
 - [x] [Video seminar](https://www.youtube.com/watch?v=R6oeYix3L_c)
+- [x] Mobile
 - [x] Deploy
-- [ ] Google index
+- [x] HTTPS
 - [x] Google page speed
 - [x] SEO test
-- [x] Bug finding
+- [x] Tìm bug
 - [x] Slug
