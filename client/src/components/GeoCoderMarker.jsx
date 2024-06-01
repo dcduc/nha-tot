@@ -23,6 +23,7 @@ const GeoCoderMarker = ({ address }) => {
       .run((_, results) => {
         if (results?.results?.length > 0) {
           const { lat, lng } = results?.results[0]?.latlng ?? {};
+          console.log(lat, lng);
           setPosition([lat, lng]);
           map.flyTo([lat, lng], 15);
         }

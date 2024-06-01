@@ -36,14 +36,29 @@ export default function Listing() {
         setLoading(true);
         const res = await fetch(`/api/listing/get/${params.listingSlug}`);
         const data = await res.json();
+        console.log(data);
         if (data.success === false) {
           setError(true);
           setLoading(false);
           return;
         }
         setListing(data);
-        setLoading(false);
+        /* ---------------------------------------------------------- */
+        const allListingsRes = await fetch(`/api/listing/get`);
+        const allListingsData = await allListingsRes.json();
+        if (allListingsData.success === false) {
+          setError(true);
+          setLoading(false);
+          return;
+        }
+        const district = data.address.split(", ").slice(-3).join(", ");
+        const similarListings = allListingsData.filter(
+          (lst) =>
+            lst.address.includes(district) && lst.slug !== params.listingSlug
+        );
+        setSuggestions(similarListings);
         setError(false);
+        setLoading(false);
       } catch (error) {
         setError(true);
         setLoading(true);
@@ -52,35 +67,34 @@ export default function Listing() {
     fetchListing();
   }, [params.listingSlug]);
 
-  useEffect(() => {
-    const fetchSuggestions = async () => {
-      try {
-        // Fetch all listings to find suggestions
-        const allListingsRes = await fetch(`/api/listing/get`);
-        const allListingsData = await allListingsRes.json();
-        if (allListingsData.success === false) {
-          setError(true);
-          setLoading(false);
-          return;
-        }
-
-        // Extract the district from the current listing address
-        const district = listing.address.split(", ").slice(-3).join(", ");
-
-        // Find listings in the same district
-        const similarListings = allListingsData.filter(
-          (lst) =>
-            lst.address.includes(district) && lst.slug !== params.listingSlug
-        );
-
-        setSuggestions(similarListings);
-      } catch (error) {
-        setError(true);
-        setLoading(false);
-      }
-    };
-    fetchSuggestions();
-  }, [listing, params.listingSlug]);
+  // useEffect(() => {
+  //   const fetchSuggestions = async () => {
+  //     try {
+  //       // Fetch all listings to find suggestions
+  //       const allListingsRes = await fetch(`/api/listing/get`);
+  //       const allListingsData = await allListingsRes.json();
+  //       if (allListingsData.success === false) {
+  //         setError(true);
+  //         setLoading(false);
+  //         return;
+  //       }
+  //       // Extract the district from the current listing address
+  //       const district = listing.address.split(", ").slice(-3).join(", ");
+  //       // Find listings in the same district
+  //       const similarListings = allListingsData.filter(
+  //         (lst) =>
+  //           lst.address.includes(district) && lst.slug !== params.listingSlug
+  //       );
+  //       setSuggestions(similarListings);
+  //       setError(false);
+  //       setLoading(false);
+  //     } catch (error) {
+  //       setError(true);
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchSuggestions();
+  // }, [listing, params.listingSlug]);
 
   return (
     <main>
