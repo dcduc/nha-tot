@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import PropTypes from "prop-types";
 import L from "leaflet";
