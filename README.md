@@ -1,7 +1,7 @@
 # Nhà Tốt
 
 > Đồ án môn Lập trình Ứng dụng Web
-> Site: https://nha-tot.vercel.app/
+> Site: https://nha-tot.eastasia.cloudapp.azure.com/
 
 ## How to use
 
@@ -51,5 +51,6 @@ npm run dev
 - [x] Google page speed
 - [x] SEO test
 - [x] Tìm bug
-- [x] Google Index ![](https://imgur.com/Vxnyexf)
+- [x] Google Index
+      ![](https://imgur.com/Vxnyexf)
 - [x] Slug
