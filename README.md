@@ -51,4 +51,5 @@ npm run dev
 - [x] Google page speed
 - [x] SEO test
 - [x] Tìm bug
+- [x] Google Index ![](https://imgur.com/Vxnyexf)
 - [x] Slug
